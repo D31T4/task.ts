@@ -1,5 +1,5 @@
 import 'jest';
-import { run, runToEnd, serial, parallel, empty } from '.';
+import { run, runToEnd, serial, parallel, empty, compress } from '.';
 
 import { sequenceEqual } from '@d31t4/linq.ts/dist/utils';
 import range from '@d31t4/linq.ts/dist/utils/range';
@@ -67,5 +67,12 @@ describe(runToEnd, () => {
         }
 
         expect(runToEnd(f())).toBe(10);
+    });
+});
+
+describe(compress, () => {
+    it('should return a task with size floor(N / compressionRatio)', () => {
+        expect([...compress(range(10) as Generator, 2)].length).toBe(5);
+        expect([...compress(range(9) as Generator, 2)].length).toBe(4);
     });
 });

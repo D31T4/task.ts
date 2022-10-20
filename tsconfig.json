@@ -20,7 +20,8 @@
       "baseUrl": "./",
       "rootDir": "./src",
       "lib": [
-        "ESNext"
+        "ESNext",
+        "DOM"
       ],
     },
     "include": [
